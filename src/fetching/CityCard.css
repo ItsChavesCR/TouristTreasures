@@ -1,0 +1,13 @@
+.container-card{
+    .list-cards{
+        display: flex;
+        gap: 5px;
+    }
+    
+    .result-item{
+        border: 2px solid gray;
+        padding: 8px;
+        border-radius: 8px;
+        width: 30%;
+    }
+}
