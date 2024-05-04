@@ -1,10 +1,14 @@
-import CityCard from "./fetching/CityCard"
+import PlacesCard from "./components/PlacesCard"
+import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 
-function App() {
+function App () {
 
   return (
     <>
-    <CityCard/>
+      <Navbar/>
+      <PlacesCard />
+      <Footer/>
     </>
   )
 }
