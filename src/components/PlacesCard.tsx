@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './styles/PlacesCard.css';
+import '../styles/PlacesCard.css';
 
 const PlacesCard = () => {
 

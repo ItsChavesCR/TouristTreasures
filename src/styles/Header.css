@@ -1,0 +1,24 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+header {
+
+    background-color: #00897C;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    line-height: 100px;
+    color: whitesmoke;
+}
+
+.name-countryes{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    
+    color: black;
+}
+
+a{}

@@ -1,0 +1,12 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer{
+    background-color: #004D40;
+    border: solid 2px black;
+    width: 250;
+    height: 250px;
+    padding-top: 10px;
+}
