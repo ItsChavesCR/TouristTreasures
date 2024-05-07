@@ -1,13 +1,14 @@
 import React from 'react'
 import '../styles/Header.css'
 import {Link} from 'react-router-dom'
-import PlacesCard from './PlacesCard'
+
+
 
 
 
 const Header = () => {
+
   return (
-    
   
       <>
       <header className='header'>
@@ -15,7 +16,7 @@ const Header = () => {
         <Link to="/">All Countryes</Link>
       </li>
       <li>
-        <Link to="/costarica">Costa Rica</Link>
+        <Link to="/costarica">Costa Rica</Link> {/*Hacer un OnClick*/}
       </li>
       <li>
         <Link to="/portugal">Portugal</Link>
@@ -30,8 +31,6 @@ const Header = () => {
         <Link to="/australia">Australia</Link>
       </li>
     </header>
-
-    
     </>
 
    
