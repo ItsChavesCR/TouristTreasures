@@ -45,8 +45,9 @@ const NewPlace = () => {
             />
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
           </div>
-          <div style={{ textAlign: 'center' }}>
-            <input type='submit' value='Agregar' />
+          <div className='confirm-input'>
+            <input type='submit' value='Agregar' /> 
+            <input type='submit' value='Cancelar'/>
           </div>
         </form>
       </div>
