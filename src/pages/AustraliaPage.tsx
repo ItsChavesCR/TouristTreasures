@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+const AustraliaPage= () => {
 
-const CostaRicaPage = () => {
-
-const countryId = 1;
+const countryId = 5;
 
     
 const [places, setPlaces] = useState<Place[]>([]);
@@ -40,4 +39,4 @@ useEffect(() => {
   )
 }
 
-export default CostaRicaPage
+export default AustraliaPage

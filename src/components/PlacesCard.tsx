@@ -8,7 +8,7 @@ const PlacesCard = () => {
 
 
     useEffect(() => {
-        fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/1/places`) //Quitar el dato quemado
+        fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/places`) //Quitar el dato quemado
             .then(response => response.json()) 
             .then(json => setPlaces(json))
     }, [])
