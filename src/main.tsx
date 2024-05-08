@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import HomePage from './pages/HomePage.tsx';
 import CostaRicaPage from './pages/CostaRicaPage.tsx';
+import NewPlace from './pages/NewPlace.tsx';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     element: <CostaRicaPage/>,
   },
 
+  {
+    path: "/addplace",
+    element: <NewPlace/>
+
+  }
   
   
 ]);
