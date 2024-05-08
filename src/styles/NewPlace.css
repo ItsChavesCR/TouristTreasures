@@ -1,20 +1,27 @@
 /* Fondo del formulario */
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 .container_form {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  margin: 30%;
+  
+}
+
+  h1{
+    text-align: center;
   }
   
-  /* Fondo del container */
-  body {
-    background-color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
-  
+ 
+
   /* Estilos adicionales */
   form {
     max-width: 400px;
@@ -39,6 +46,6 @@
     cursor: pointer;
   }
   
-  input[type="submit"]:hover {
+  input[type="submit"] {
     background-color: #45a049;
   }

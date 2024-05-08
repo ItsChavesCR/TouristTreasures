@@ -6,7 +6,12 @@ import {
 } from "react-router-dom";
 import HomePage from './pages/HomePage.tsx';
 import CostaRicaPage from './pages/CostaRicaPage.tsx';
+import PortugalPage from './pages/PortugalPage.tsx';
+import IndiaPage from './pages/IndiaPage.tsx';
+import JaponPage from './pages/JaponPage.tsx';
+import AustraliaPage from './pages/AustraliaPage.tsx';
 import NewPlace from './pages/NewPlace.tsx';
+
 
 
 const router = createBrowserRouter([
@@ -18,13 +23,26 @@ const router = createBrowserRouter([
     path: "/costarica",
     element: <CostaRicaPage/>,
   },
-
+  {
+    path: "/portugal",
+    element: <PortugalPage/>
+  },
+  {
+    path: "/india",
+    element: <IndiaPage/>
+  },
+  {
+    path: "/japon",
+    element: <JaponPage/>
+  },
+  {
+    path: "/australia",
+    element: <AustraliaPage/>
+  },
   {
     path: "/addplace",
     element: <NewPlace/>
-
   }
-  
   
 ]);
 
