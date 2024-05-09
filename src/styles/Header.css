@@ -6,6 +6,7 @@
 header {
  
     background-color: hsl(174, 76%, 38%);
+    font-family: 'Times New Roman', Times, serif;
     height: 100px;
     width: 100%;
     text-align: right;
@@ -23,6 +24,17 @@ li{
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none;  
     color: inherit;
+    font-size: 120%;
+}
+.container-title{
+    padding-left: 34%;
+    
+}
+
+
+.title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 165%;
 }
