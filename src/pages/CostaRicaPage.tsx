@@ -3,10 +3,10 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 
+
 const CostaRicaPage = () => {
-
 const countryId = 1;
-
+ 
     
 const [places, setPlaces] = useState<Place[]>([]);
 
@@ -20,6 +20,7 @@ useEffect(() => {
 
       <>
           <Header />
+
           <div className='container-card'>
               {
                   places?.length > 0 && places.map((place: Place) => (
@@ -34,6 +35,7 @@ useEffect(() => {
                   ))
               }
           </div>
+          
           <Footer/>
       </>
 
