@@ -7,7 +7,7 @@
     margin: 5%;
     display: flex;
     flex-flow: row wrap ;
-   column-gap: 71px;
+   column-gap: 34px;
    row-gap: 50px;
     align-content: center;  
 }
