@@ -1,12 +1,21 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import '../styles/NewPlace.css'
+import { useNavigate } from 'react-router-dom';
 
+//como paso esto hook donde debe de ser ??
 const NewPlace = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = (data) => {
     console.log(data);
+  }
+ 
+
+  const handleCancel = () => {
+    navigate('/')
   }
 
   return (
@@ -16,7 +25,7 @@ const NewPlace = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label>Id</label>
-            <input type='text' {...register('Id')} readOnly />
+            <input type='text' {...register('Id')}  />
           </div>
           <br />
           <div>
@@ -46,8 +55,8 @@ const NewPlace = () => {
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
           </div>
           <div className='confirm-input'>
-            <input type='submit' value='Agregar' /> 
-            <input type='submit' value='Cancelar'/>
+            <input type='submit' value='Aceptar' /> 
+            <input type='submit' value='Cancelar' onClick={handleCancel}/>
           </div>
         </form>
       </div>
