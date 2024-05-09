@@ -12,7 +12,7 @@ const NewPlace = () => {
   const onSubmit = (data) => {
     console.log(data);
   }
- 
+
 
   const handleCancel = () => {
     navigate('/')
@@ -25,7 +25,7 @@ const NewPlace = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <label>Id</label>
-            <input type='text' {...register('Id')}  />
+            <input type='text' {...register('Id')} />
           </div>
           <br />
           <div>
@@ -55,8 +55,8 @@ const NewPlace = () => {
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
           </div>
           <div className='confirm-input'>
-            <input type='submit' value='Aceptar' /> 
-            <input type='submit' value='Cancelar' onClick={handleCancel}/>
+            <input type='submit' value='Aceptar' />
+            <input type='submit' value='Cancelar' onClick={handleCancel} />
           </div>
         </form>
       </div>
