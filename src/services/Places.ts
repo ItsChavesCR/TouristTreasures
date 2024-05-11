@@ -1,24 +1,53 @@
-const urlUsersBase = 'https://6632f68bf7d50bbd9b47beee.mockapi.io/places';
+export async function createPlace(
+    countryId: number,
+    newPlace: PlaceType
+  ) {
+    let response;
+    try {
+      response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places`),
+        {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(newPlace),
+        }
+      if (!response.ok) throw new Error("Error to create product");
+    } catch (error) {
+      console.error("Error occurred while creating product: ", error);
+      throw error;
+    } finally {
+      console.log("Finished creating product");
+    }
+  
+    try {
+      const responseData: PlaceType = await response.json();
+     //Sleep puede ser posible meterlo
+      return responseData;
+    } catch (error) {
+      console.error("Error occurred while parsing response: ", error);
+      throw error;
+    }
+  }
 
 
 
+export async function getAllPlaces() {
+    try {
+        const response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/places`, {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+        });
 
-
-const getAllPlaces = async () => {
-    const response = await fetch(urlUsersBase);
-    const result = await response.json();
-    return result;
-};
-
-const getPlaceById = async (id: number) => {
-    const response = await fetch(`${urlUsersBase}/${id}`);
-    const result = await response.json();
-    return result;
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        throw error;
+    } finally {
+        console.log("Successfully created place");
+    }
 }
 
 
-
-export {
-    getAllPlaces,
-    getPlaceById
-}
