@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getPlaceById } from "../services/Places"
+import { getPlaceById } from "../../services/Places"
 
 
 const useGetPlaceById = (id: number) => {

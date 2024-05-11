@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllPlaces } from "../services/Places"
+import { getAllPlaces } from "../../services/Places"
 
 
 const useGetAllPlaces = () => {

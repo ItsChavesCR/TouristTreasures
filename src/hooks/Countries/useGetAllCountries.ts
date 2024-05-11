@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getAllCountries } from "../services/Countries"
+import { getAllCountries } from "../../services/Countries"
 
 
 const useGetAllCountries = () => {
