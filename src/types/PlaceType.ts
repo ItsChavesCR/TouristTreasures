@@ -1,4 +1,4 @@
-type Place = {
+type PlaceType = {
 
     placeId: number,
     countryId: number,

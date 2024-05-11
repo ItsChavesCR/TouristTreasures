@@ -18,7 +18,7 @@
     font-family: 'Times New Roman', Times, serif;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     /* Sombra */
-    transition: 0.3s;
+    transition: 0.4s;
     /* Transición suave al cambiar de estado */
     border-radius: 10px;
     /* Bordes redondeados */
@@ -47,9 +47,11 @@
     }
 
     #place-rating{
-        border: 2px solid rgb(255, 255, 255);
+        border: 2px solid rgb(79, 169, 199);
+        border-radius: 10%;
         background-color: rgb(79, 169, 199);
-        color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
         margin-right: 214px;
         text-align: center;
+        width: 15%;
     }
