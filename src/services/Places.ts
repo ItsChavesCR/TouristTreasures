@@ -1,10 +1,6 @@
-
-
 export async function createPlace(
     countryId: number,
     newPlace: PlaceType
-
-    
   ) {
     let response;
     try {
@@ -18,9 +14,7 @@ export async function createPlace(
     } catch (error) {
       console.error("Error occurred while creating product: ", error);
       throw error;
-    } finally {
-      console.log("Finished creating product");
-    }
+    } 
   
     try {
       const responseData: PlaceType = await response.json();
@@ -46,9 +40,7 @@ export async function getAllPlaces() {
     } catch (error) {
         console.error("Error fetching data:", error);
         throw error;
-    } finally {
-        console.log("Successfully created place");
-    }
+    } 
 }
 
 export async function getProductById(countryId: string, placeId: string) {
@@ -65,9 +57,7 @@ export async function getProductById(countryId: string, placeId: string) {
   } catch (error) {
     console.error("Error occurred while fetching product: ", error);
     throw error;
-  } finally {
-    console.log("Finished fetching product");
-  }
+  } 
   try {
     const responseData: PlaceType = await response.json();
     return responseData;
@@ -112,9 +102,7 @@ export async function getProductByCountry(
       error
     );
     throw error;
-  } finally {
-    console.log("Finished fetching products by category");
-  }
+  } 
 
   try {
     const responseData: PlaceType[] = await response.json();
@@ -145,10 +133,7 @@ export async function updateProduct(
   } catch (error) {
     console.error("Error occurred while updating product: ", error);
     throw error;
-  } finally {
-    console.log("Finished updating product");
-  }
-
+  } 
   try {
     const responseData: PlaceType = await response.json();
     return responseData;
@@ -173,9 +158,7 @@ export async function deleteProduct(countryId: number, placeId: number) {
   } catch (error) {
     console.error("Error occurred while deleting product: ", error);
     throw error;
-  } finally {
-    console.log("Finished deleting product");
-  }
+  } 
 
   try {
     const responseData: PlaceType = await response.json();

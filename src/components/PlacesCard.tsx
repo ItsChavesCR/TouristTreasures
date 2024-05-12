@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import '../styles/PlacesCard.css';
+import { getAllPlaces } from '../services/Places';
+import useGetAllPlaces from '../hooks/Places/useGetAllPlaces';
 
 const PlacesCard = () => {
 
-    const [places, setPlaces] = useState<PlaceType[]>([]);
-
-
+    const { placesResults , setPlacesResults } = useGetAllPlaces ();
 
     useEffect(() => {
-        fetch( `https://6632f68bf7d50bbd9b47beee.mockapi.io/places`) //Quitar el dato quemado
-            .then(response => response.json())
-            .then(json => setPlaces(json))
-    }, [])
+        getAllPlaces()
+          .then(placesResults => {
+            setPlacesResults(placesResults);
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }, [setPlacesResults]);
 
     return (
-
         <div className='container-card'>
             {
-                places?.length > 0 && places.map((place: PlaceType) => (
+                placesResults?.length > 0 && placesResults.map((place: PlaceType) => (
                     <div key={place.placeId} className='place-card'>
                         <img id='place-image' src={place.image}></img>
                         <strong id='place-name'> {place.name}</strong>

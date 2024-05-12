@@ -1,14 +1,12 @@
-import React, { useContext } from 'react'
+
 import { useForm } from 'react-hook-form';
 import '../styles/NewPlace.css'
 import { useNavigate } from 'react-router-dom';
 import { createPlace } from '../services/Places';
-import CountryContext from '../context/CountryContext';
+
 
 //como paso esto hook donde debe de ser ??
 const NewPlace = () => {
-
-  const {countryId} = useContext(CountryContext)
 
 
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -17,13 +15,13 @@ const NewPlace = () => {
 
   const onSubmit = handleSubmit (async (data) => {
 
+
     const placeData = JSON.parse(JSON.stringify(data))
     console.log(placeData)
-    console.log(data.countryId)
+   
 
     try {
       await createPlace(data.countryId, placeData)
-
       navigate('/')
   } catch (error) {
       console.error('Error creating product:', error)
@@ -44,7 +42,6 @@ const NewPlace = () => {
             <input
              type='text' 
             {...register('Id')}
-            value={countryId}
             />
           </div>
           <br />
@@ -54,7 +51,7 @@ const NewPlace = () => {
             
             type='text' 
             {...register('name')} 
-            value={countryId}
+           
             />
           </div>
           <br />
@@ -89,6 +86,8 @@ const NewPlace = () => {
             <button type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
           </div>
         </form>
+    
+
       </div>
     </>
   )
