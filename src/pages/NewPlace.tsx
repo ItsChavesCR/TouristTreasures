@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form';
 import '../styles/NewPlace.css'
 import { useNavigate } from 'react-router-dom';
+import { createPlace } from '../services/Places';
+import CountryContext from '../context/CountryContext';
 
 //como paso esto hook donde debe de ser ??
 const NewPlace = () => {
+
+  const {countryId} = useContext(CountryContext)
+
 
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = handleSubmit (async (data) => {
+
+    const placeData = JSON.parse(JSON.stringify(data))
+    console.log(placeData)
+    console.log(data.countryId)
+
+    try {
+      await createPlace(data.countryId, placeData)
+
+      navigate('/')
+  } catch (error) {
+      console.error('Error creating product:', error)
   }
+})
 
   const handleCancel = () => {
     navigate('/')
@@ -22,13 +38,14 @@ const NewPlace = () => {
     <>
       <h1>Formulario</h1>
       <div className='container_form'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <div>
             <label>Id</label>
             <input
-          
              type='text' 
-            {...register('Id')} />
+            {...register('Id')}
+            value={countryId}
+            />
           </div>
           <br />
           <div>
@@ -36,18 +53,23 @@ const NewPlace = () => {
             <input 
             
             type='text' 
-            {...register('name')} />
+            {...register('name')} 
+            value={countryId}
+            />
           </div>
           <br />
           <div>
             <label>Descripción</label>
-            <input type='text' 
+            <input 
+            type='text' 
             {...register('description')} />
+
           </div>
           <br />
           <div>
             <label>Precio</label>
-            <input type='text' 
+            <input 
+            type='text' 
             {...register('price $')} />
           </div>
           <br />
@@ -63,8 +85,8 @@ const NewPlace = () => {
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
           </div>
           <div className='confirm-input'>
-            <input type='submit' value='Aceptar' onClick={onSubmit} />
-            <input type='submit' value='Cancelar' onClick={handleCancel} />
+            <button type='submit' value='Aceptar' >Aceptar</button>
+            <button type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
           </div>
         </form>
       </div>
