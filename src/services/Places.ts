@@ -20,7 +20,6 @@ export async function createPlace(
   
     try {
       const responseData: PlaceType = await response.json();
-     //Sleep puede ser posible meterlo
       return responseData;
     } catch (error) {
       console.error("Error occurred while parsing response: ", error);

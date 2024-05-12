@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 //como paso esto hook donde debe de ser ??
 const NewPlace = () => {
+
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -12,7 +13,6 @@ const NewPlace = () => {
   const onSubmit = (data) => {
     console.log(data);
   }
-
 
   const handleCancel = () => {
     navigate('/')
@@ -22,25 +22,33 @@ const NewPlace = () => {
     <>
       <h1>Formulario</h1>
       <div className='container_form'>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>Id</label>
-            <input type='text' {...register('Id')} />
+            <input
+          
+             type='text' 
+            {...register('Id')} />
           </div>
           <br />
           <div>
             <label>Nombre</label>
-            <input type='text' {...register('name')} />
+            <input 
+            
+            type='text' 
+            {...register('name')} />
           </div>
           <br />
           <div>
             <label>Descripción</label>
-            <input type='text' {...register('description')} />
+            <input type='text' 
+            {...register('description')} />
           </div>
           <br />
           <div>
             <label>Precio</label>
-            <input type='text' {...register('price $')} />
+            <input type='text' 
+            {...register('price $')} />
           </div>
           <br />
           <div>
@@ -55,7 +63,7 @@ const NewPlace = () => {
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
           </div>
           <div className='confirm-input'>
-            <input type='submit' value='Aceptar' />
+            <input type='submit' value='Aceptar' onClick={onSubmit} />
             <input type='submit' value='Cancelar' onClick={handleCancel} />
           </div>
         </form>
