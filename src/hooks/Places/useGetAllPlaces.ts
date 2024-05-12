@@ -4,18 +4,19 @@ import { getAllPlaces } from "../../services/Places"
 
 const useGetAllPlaces = () => {
 
-    const [places, setPlaces] = useState<Place[]>([])
-
-    useEffect(()=> {
-        (
-           async function() {
-               const places = await getAllPlaces();
-               setPlaces(places);
-           }
-        )()
-     },[])
+    const [placesResults, setPlacesResults] = useState<PlaceType[]>([])
+useEffect(() => {
+  (async function() {
+    try {
+      const placesResults = await getAllPlaces();
+      setPlacesResults(placesResults);
+    } catch (error) {
+      console.error(error);
+    }
+  })();
+}, []);
   
-    return { places };
+    return { placesResults, setPlacesResults };
 }
 
 export default useGetAllPlaces
