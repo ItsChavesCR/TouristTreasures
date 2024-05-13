@@ -1,27 +1,19 @@
-
 import { useForm } from 'react-hook-form';
 import '../styles/NewPlace.css'
 import { useNavigate } from 'react-router-dom';
-import { createPlace } from '../services/Places';
+import { createPlaces } from '../services/Places';
 
-
-//como paso esto hook donde debe de ser ??
 const NewPlace = () => {
 
-
-  const { register, formState: { errors }, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = handleSubmit(async (data) => {
-
-
-    const placeData = JSON.parse(JSON.stringify(data))
-    console.log(placeData)
-
+    const placeData: PlaceType = JSON.parse(JSON.stringify(data))
 
     try {
-      await createPlace(data.countryId, placeData)
+      await createPlaces(placeData)
       navigate('/')
     } catch (error) {
       console.error('Error creating product:', error)
@@ -51,7 +43,6 @@ const NewPlace = () => {
 
               type='text'
               {...register('name')}
-
             />
           </div>
           <br />
@@ -70,37 +61,39 @@ const NewPlace = () => {
           </div>
           <br />
           <div>
-            <label>Precio</label>
+            <label htmlFor='priceInput'>Precio</label>
             <input
               type='text'
-              {...register('price $')} />
+              {...register('price')}
+              id='priceInput'
+            />
           </div>
           <br />
           <div>
-            <label>Rating</label>
+            <label htmlFor='ratingInput'>Rating</label>
             <input
               type="number"
               {...register('rating', {
                 max: { value: 5, message: 'El rating no puede ser mayor a 5' },
                 min: { value: 0, message: 'El rating no puede ser menor a 0' },
               })}
+              id='ratingInput'
             />
-            {errors.rating?.message && <p>{errors.rating?.message}</p>}
-
             <label
-              htmlFor='country'>
-              Country
+              htmlFor='countryId'>
+              <strong>Country</strong>
             </label>
+            <br />
             <select
               {...register('countryId')}
-              id='country'
+              id='countryId'
               required>
               <option >Select country</option>
-              <option value='1'>Costa Rica</option>
-              <option value='2'>Portugal</option>
-              <option value='3'>India</option>
-              <option value='4'>Japon</option>
-              <option value='5'>Australia</option>
+              <option value='1'> Costa Rica </option>
+              <option value='2'> Portugal </option>
+              <option value='3'> India </option>
+              <option value='4'> Japon </option>
+              <option value='5'> Australia </option>
             </select>
           </div>
           <div className='confirm-input'>
@@ -108,8 +101,6 @@ const NewPlace = () => {
             <button type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
           </div>
         </form>
-
-
       </div>
     </>
   )

@@ -7,7 +7,7 @@ const IndiaPage = () => {
 const countryId = 3;
 
     
-const [places, setPlaces] = useState<Place[]>([]);
+const [places, setPlaces] = useState<PlaceType[]>([]);
 
 useEffect(() => {
     fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places`)
@@ -21,7 +21,7 @@ useEffect(() => {
           <Header />
           <div className='container-card'>
               {
-                  places?.length > 0 && places.map((place: Place) => (
+                  places?.length > 0 && places.map((place: PlaceType) => (
                       <div key={place.placeId} className='place-card'>
                           <img id='place-image' src={place.image}></img>
                           <strong id='place-name'> {place.name}</strong>

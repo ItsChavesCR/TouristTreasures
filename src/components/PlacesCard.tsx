@@ -30,7 +30,7 @@ const PlacesCard = () => {
                         <p id='place-rating' >{place.rating}</p>
                     </div>
                 ))
-            }
+            }       
         </div>
     )
 }
