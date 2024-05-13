@@ -13,20 +13,20 @@ const NewPlace = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = handleSubmit (async (data) => {
+  const onSubmit = handleSubmit(async (data) => {
 
 
     const placeData = JSON.parse(JSON.stringify(data))
     console.log(placeData)
-   
+
 
     try {
       await createPlace(data.countryId, placeData)
       navigate('/')
-  } catch (error) {
+    } catch (error) {
       console.error('Error creating product:', error)
-  }
-})
+    }
+  })
 
   const handleCancel = () => {
     navigate('/')
@@ -40,34 +40,40 @@ const NewPlace = () => {
           <div>
             <label>Id</label>
             <input
-             type='text' 
-            {...register('Id')}
+              type='text'
+              {...register('Id')}
             />
           </div>
           <br />
           <div>
             <label>Nombre</label>
-            <input 
-            
-            type='text' 
-            {...register('name')} 
-           
+            <input
+
+              type='text'
+              {...register('name')}
+
             />
           </div>
           <br />
           <div>
             <label>Descripción</label>
-            <input 
-            type='text' 
-            {...register('description')} />
-
+            <input
+              type='text'
+              {...register('description')} />
+          </div>
+          <div>
+            <label htmlFor='imagenInput'>Imagen</label>
+            <input
+              type='text'
+              {...register('image')}
+              id='imagenInput' />
           </div>
           <br />
           <div>
             <label>Precio</label>
-            <input 
-            type='text' 
-            {...register('price $')} />
+            <input
+              type='text'
+              {...register('price $')} />
           </div>
           <br />
           <div>
@@ -80,13 +86,29 @@ const NewPlace = () => {
               })}
             />
             {errors.rating?.message && <p>{errors.rating?.message}</p>}
+
+            <label
+              htmlFor='country'>
+              Country
+            </label>
+            <select
+              {...register('countryId')}
+              id='country'
+              required>
+              <option >Select country</option>
+              <option value='1'>Costa Rica</option>
+              <option value='2'>Portugal</option>
+              <option value='3'>India</option>
+              <option value='4'>Japon</option>
+              <option value='5'>Australia</option>
+            </select>
           </div>
           <div className='confirm-input'>
             <button type='submit' value='Aceptar' >Aceptar</button>
             <button type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
           </div>
         </form>
-    
+
 
       </div>
     </>
