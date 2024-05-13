@@ -3,7 +3,7 @@ import '../styles/NewPlace.css'
 import { useNavigate } from 'react-router-dom';
 import { createPlaces } from '../services/Places';
 
-const NewPlace = () => {
+const NewPlaceForm = () => {
 
   const { register, handleSubmit } = useForm();
 
@@ -106,4 +106,4 @@ const NewPlace = () => {
   )
 }
 
-export default NewPlace
+export default NewPlaceForm
