@@ -10,7 +10,7 @@ import PortugalPage from './pages/PortugalPage.tsx';
 import IndiaPage from './pages/IndiaPage.tsx';
 import JaponPage from './pages/JaponPage.tsx';
 import AustraliaPage from './pages/AustraliaPage.tsx';
-import NewPlace from './pages/NewPlace.tsx';
+import NewPlace from './components/NewPlaceForm.tsx';
 import '../src/index.css';
 
 
