@@ -12,6 +12,7 @@ import JaponPage from './pages/JaponPage.tsx';
 import AustraliaPage from './pages/AustraliaPage.tsx';
 import NewPlace from './components/NewPlaceForm.tsx';
 import '../src/index.css';
+import DeletePlaceModal from './components/DeletePlaceModal.tsx';
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/australia",
-    element: <AustraliaPage/>
+    element: <DeletePlaceModal/>
   },
   {
     path: "/addplace",
