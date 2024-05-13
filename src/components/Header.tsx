@@ -8,9 +8,6 @@ const Header = () => {
 
     <>
       <header className='header'>
-
-
-
         <li>
           <Link to="/">All Countryes</Link>
         </li>

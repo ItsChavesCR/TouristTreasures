@@ -1,29 +1,23 @@
-export async function createPlace(
-    countryId: number,
-    newPlace: PlaceType
-  ) {
-    let response;
-    try {
-      response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places`),
-        {
-          method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify(newPlace),
-        }
-      if (!response.ok) throw new Error("Error to create product");
-    } catch (error) {
-      console.error("Error occurred while creating product: ", error);
-      throw error;
-    } 
-  
-    try {
-      const responseData: PlaceType = await response.json();
-      return responseData;
-    } catch (error) {
-      console.error("Error occurred while parsing response: ", error);
-      throw error;
-    }
+export async function createPlaces(
+  PostPlace: PlaceType,
+) {
+  let response;
+  try {
+    response = await fetch(
+      `https://6632f68bf7d50bbd9b47beee.mockapi.io//places`,
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(PostPlace),
+      }
+    );
+    if (!response.ok) throw new Error("Error al crear producto");
+  } catch (error) {
+    console.error("Error: ", error);
+    throw error;
   }
+}
+
 
 export async function getAllPlaces() {
     try {
@@ -67,7 +61,6 @@ export async function getProductById(countryId: string, placeId: string) {
   }
 }
 
-
 export async function getProductByCountry(
   countryId: number,
   page: number,
@@ -103,21 +96,30 @@ export async function getProductByCountry(
     );
     throw error;
   } 
+}
 
+export async function deletePlace(countryId: number, placeId: number) {
+  let response;
   try {
-    const responseData: PlaceType[] = await response.json();
-    return responseData;
+    response = await fetch(
+      `https://6632f68bf7d50bbd9b47beee.mockapi.io/api/v1/countries/${countryId}/places/${placeId}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (!response.ok) throw new Error("Error deleting product");
   } catch (error) {
-    console.error("Error occurred while parsing response: ", error);
+    console.error("Error occurred while deleting product: ", error);
     throw error;
-  }
+  } 
 }
 
 
-export async function updateProduct(
+ export async function updatePlace(
   countryId: string,
   placeId: string,
-  updatedProduct: PlaceType
+  updatedPlace: PlaceType
 ) {
   let response;
   try {
@@ -126,7 +128,7 @@ export async function updateProduct(
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedProduct),
+        body: JSON.stringify(updatedPlace),
       }
     );
     if (!response.ok) throw new Error("Error updating product");
@@ -144,29 +146,5 @@ export async function updateProduct(
 }
 
 
-export async function deleteProduct(countryId: number, placeId: number) {
-  let response;
-  try {
-    response = await fetch(
-      `https://6632f68bf7d50bbd9b47beee.mockapi.io/api/v1/categories/${countryId}/products/${placeId}`,
-      {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    if (!response.ok) throw new Error("Error deleting product");
-  } catch (error) {
-    console.error("Error occurred while deleting product: ", error);
-    throw error;
-  } 
-
-  try {
-    const responseData: PlaceType = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error("Error occurred while parsing response: ", error);
-    throw error;
-  }
-}
 
 
