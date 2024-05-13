@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import '../styles/PlacesCard.css';
 import {  getAllPlaces } from '../services/Places';
 import useGetAllPlaces from '../hooks/Places/useGetAllPlaces';
+import DeletePlaceModal from './DeletePlaceModal';
 
 const PlacesCard = () => {
 
@@ -17,14 +18,6 @@ const PlacesCard = () => {
           });
       }, [setPlacesResults]);
 
-/*const handleConfirmDelete = async () => {
-    console.log ("Submit delete product")
-    try{
-        await deletePlace(countryId, placeId)
-
-    }
-}*/
-
 
     return (
         <div className='container-card'>
@@ -37,12 +30,14 @@ const PlacesCard = () => {
                         <p id='place-description'> {place.description}</p>
                         <p id='place-price'>{place.price}</p>
                         <p id='place-rating' >{place.rating}</p>
-                        <br/>
-                        <button id='button' type='submit' value='Delete' >Eliminar</button>
-                        <button id='button' type='submit' value='Ediatr' >Editar</button>
+                        <DeletePlaceModal/> 
                     </div>
+
+                   
                 ))
-            }       
+            }
+
+                 
         </div>
     )
 }

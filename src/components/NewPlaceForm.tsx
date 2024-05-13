@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import '../styles/NewPlace.css'
+import '../styles/NewPlaceForm.css'
 import { useNavigate } from 'react-router-dom';
 import { createPlaces } from '../services/Places';
 

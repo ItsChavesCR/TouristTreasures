@@ -4,7 +4,7 @@ export async function createPlaces(
   let response;
   try {
     response = await fetch(
-      `https://6632f68bf7d50bbd9b47beee.mockapi.io//places`,
+      `https://6632f68bf7d50bbd9b47beee.mockapi.io/places`,
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -98,16 +98,16 @@ export async function getProductByCountry(
   } 
 }
 
-export async function deletePlace(countryId: number, placeId: number) {
+export async function deletePlace(placeId : number) {
   let response;
   try {
     response = await fetch(
-      `https://6632f68bf7d50bbd9b47beee.mockapi.io/api/v1/countries/${countryId}/places/${placeId}`,
+      `https://6632f68bf7d50bbd9b47beee.mockapi.io/places/${placeId}`,
       {
         method: "DELETE",
-        headers: { "Content-Type": "application/json" },
+      
       }
-    );
+    )
     if (!response.ok) throw new Error("Error deleting product");
   } catch (error) {
     console.error("Error occurred while deleting product: ", error);
