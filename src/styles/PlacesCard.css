@@ -55,8 +55,13 @@
         width: 15%;
     }
 
-    #button{
-    display: flex;
-    background-color: rgb(84, 190, 190);
-    border-radius: 2px ;    
-}
+   .container-details{
+    background-color: rgb(79,169, 199);
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: small;
+    text-align: center;
+    margin-left: 60px;
+    margin-right: 60px;
+
+   }
