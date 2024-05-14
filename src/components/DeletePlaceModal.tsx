@@ -5,6 +5,7 @@ import CountryContext from "../context/CountryContext";
 
 export default function DeletePlaceModal({ name }: {
   name: string;
+  
 }) {
 
  const { placeId, countryId } = useContext(CountryContext);
@@ -22,14 +23,14 @@ export default function DeletePlaceModal({ name }: {
   }
 
   const handleConfirmDelete = async () => {
-    console.log("Submit delete product")
+    console.log("Submit delete place")
 
     try {
       await deletePlace(placeId, countryId)
       setViewModal(true)
       navigate('/')
     } catch (error) {
-      console.error('Error deleting product:', error)
+      console.error('Error deleting place:', error)
     }
   }
   return (

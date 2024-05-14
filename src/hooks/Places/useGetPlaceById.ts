@@ -1,29 +1,25 @@
-import { useEffect, useState } from "react"
-import { getPlaceById } from "../../services/Places"
+import { useEffect, useState } from "react";
+import { getPlaceById } from "../../services/Places";
+import PlaceType  from "../../types/PlaceType";
 
 
-const useGetPlaceById = (id: number) => {
+export function useGetPlaceById(countryId: string, placeId: string) {
+  const [place, setPlace] = useState<PlaceType>();
+  const [loading, setLoading] = useState<boolean>(false);
 
-    const [place, setPlace] = useState<Place>({
-        placeId: 0,
-        countryId: 0,
-        name: '',
-        image: '',
-        price: '',
-        rating: 0,
-        description: ''
-    })
+  useEffect(() => {
+    async function getPlace() {
+      try {
+        const place = await getPlaceById(countryId, placeId);
+        setPlace(place);
+        setLoading(true);
+      } catch (error) {
+        console.error("Error to get place", error);
+      }
+    }
 
-    useEffect(() => {
-        (
-           async function() {
-               const place = await getPlaceById(id);
-               setPlace(place);
-           }
-        )()
-     },[id])
-  
-    return { place };
+    getPlace();
+  }, [placeId, countryId]);
+
+  return { place, loading };
 }
-
-export default useGetPlaceById

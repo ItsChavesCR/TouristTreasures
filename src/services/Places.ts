@@ -37,11 +37,11 @@ export async function getAllPlaces() {
     } 
 }
 
-export async function getProductById(countryId: string, placeId: string) {
+export async function getPlaceById(countryId: string, placeId: string) {
   let response;
   try {
     response = await fetch(
-      `https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/products/${placeId}`,
+      `https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places/${placeId}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -52,14 +52,8 @@ export async function getProductById(countryId: string, placeId: string) {
     console.error("Error occurred while fetching product: ", error);
     throw error;
   } 
-  try {
-    const responseData: PlaceType = await response.json();
-    return responseData;
-  } catch (error) {
-    console.error("Error occurred while parsing response: ", error);
-    throw error;
-  }
 }
+
 
 export async function getProductByCountry(
   countryId: number,

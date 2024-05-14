@@ -12,6 +12,8 @@ import JaponPage from './pages/JaponPage.tsx';
 import AustraliaPage from './pages/AustraliaPage.tsx';
 import NewPlaceForm from './components/NewPlaceForm.tsx';
 import '../src/index.css';
+import { DetailPlacePage } from './pages/DetailPlacePage.tsx';
+
 
 
 
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/addplace",
     element: <NewPlaceForm/>
+  },
+  {
+    path: "/places/:countryId/:placeId",
+    element: <DetailPlacePage/>
   },
 ]);
 

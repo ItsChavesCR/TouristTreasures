@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import DeletePlaceModal from "../components/DeletePlaceModal";
+
 
 const IndiaPage = () => {
 
@@ -29,8 +29,7 @@ useEffect(() => {
                           <br />
                           <p id='place-description'> {place.description}</p>
                           <p id='place-price'>{place.price}</p>
-                          <p id='place-rating' >{place.rating}</p>
-                          <DeletePlaceModal/>
+                          <p id='place-rating' >{place.rating}</p>    
                       </div>
                   ))
               }
