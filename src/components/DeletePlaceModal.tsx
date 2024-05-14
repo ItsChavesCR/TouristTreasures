@@ -1,42 +1,45 @@
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useContext } from "react";
 import { deletePlace } from "../services/Places";
+import CountryContext from "../context/CountryContext";
 
-export default function DeletePlaceModal({ placeId, countryId, name }: {
-  placeId: number;
-  countryId: number;
+export default function DeletePlaceModal({ name }: {
   name: string;
 }) {
+
+ const { placeId, countryId } = useContext(CountryContext);
+
   const navigate = useNavigate()
-  const [showModal, setShowModal] = React.useState(false);
+
+  const [viewModal, setViewModal] = React.useState(false);
+
+  const ModalPresentTrue = () =>{
+    setViewModal(true)
+  }
+
+  const ModalPresentFalse = () =>{
+    setViewModal(false)
+  }
 
   const handleConfirmDelete = async () => {
     console.log("Submit delete product")
-console.log(placeId)
 
     try {
-      await deletePlace(placeId)
-      setShowModal(false)
+      await deletePlace(placeId, countryId)
+      setViewModal(true)
       navigate('/')
     } catch (error) {
       console.error('Error deleting product:', error)
-
     }
   }
   return (
     <>
-      <button
-        className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
+      <button onClick={ModalPresentTrue} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" type="button">
         Delete
       </button>
-      {showModal ? (
+      {viewModal ? (
         <>
-          <div
-            className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-          >
+          <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="relative p-6 flex-auto">
@@ -45,18 +48,10 @@ console.log(placeId)
                   </p>
                 </div>
                 <div className="flex items-center p-6 border-t border-solid border-blueGray-200 rounded-b justify-center">
-                  <button
-                    className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
+                  <button onClick={ModalPresentFalse} className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
                     Close
                   </button>
-                  <button
-                    className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                    type="button"
-                    onClick={handleConfirmDelete}
-                  >
+                  <button onClick={handleConfirmDelete} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" type="button">
                     Confirm
                   </button>
                 </div>

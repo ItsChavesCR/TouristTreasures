@@ -98,19 +98,18 @@ export async function getProductByCountry(
   } 
 }
 
-export async function deletePlace(placeId : number) {
+export async function deletePlace(placeId: number, countryId: number) {
   let response;
   try {
-    response = await fetch(
-      `https://6632f68bf7d50bbd9b47beee.mockapi.io/places/${placeId}`,
+    response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places/${placeId}`,
       {
         method: "DELETE",
-      
+        headers: { "Content-Type": "application/json" },
       }
     )
-    if (!response.ok) throw new Error("Error deleting product");
+    if (!response.ok) throw new Error("Error deleting place");
   } catch (error) {
-    console.error("Error occurred while deleting product: ", error);
+    console.error("Error occurred while deleting place: ", error);
     throw error;
   } 
 }
