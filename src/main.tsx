@@ -10,9 +10,9 @@ import PortugalPage from './pages/PortugalPage.tsx';
 import IndiaPage from './pages/IndiaPage.tsx';
 import JaponPage from './pages/JaponPage.tsx';
 import AustraliaPage from './pages/AustraliaPage.tsx';
-import NewPlace from './components/NewPlaceForm.tsx';
+import NewPlaceForm from './components/NewPlaceForm.tsx';
 import '../src/index.css';
-import DeletePlaceModal from './components/DeletePlaceModal.tsx';
+
 
 
 const router = createBrowserRouter([
@@ -38,13 +38,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/australia",
-    element: <DeletePlaceModal/>
+    element: <AustraliaPage/>
   },
   {
     path: "/addplace",
-    element: <NewPlace/>
-  }
-  
+    element: <NewPlaceForm/>
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

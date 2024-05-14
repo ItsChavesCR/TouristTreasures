@@ -30,10 +30,10 @@ const NewPlaceForm = () => {
       <div className='container_form'>
         <form onSubmit={onSubmit}>
           <div>
-            <label>Id</label>
+            <label>PlaceId</label>
             <input
               type='text'
-              {...register('Id')}
+              {...register('placeId')}
             />
           </div>
           <br />
