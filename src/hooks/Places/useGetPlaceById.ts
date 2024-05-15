@@ -3,7 +3,7 @@ import { getPlaceById } from "../../services/Places";
 import { PlaceType } from "../../types/PlaceType";
 
 
-export function useGetPlaceById( placeId: string, countryId: string ) {
+export function useGetPlaceById( countryId: string, placeId: string ) {
   const [place, setPlace] = useState<PlaceType>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -19,7 +19,7 @@ export function useGetPlaceById( placeId: string, countryId: string ) {
     }
 
     getPlace();
-  }, [placeId, countryId]);
+  }, [countryId, placeId]);
 
   return { place, loading };
 }
