@@ -25,7 +25,7 @@ const UpdatePlaceForm = () => {
             <label htmlFor='placeidInput'>PlaceId</label>
             <input
               type='text'
-              {...register('placeId')}
+              {...register('placeId')} readOnly
               id='placeIdInput'
             />
           </div>
