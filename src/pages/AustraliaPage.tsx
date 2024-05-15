@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
-import Footer from "../components/Footer";
-import DeletePlaceModal from "../components/DeletePlaceModal";
 import { PlaceType } from "../types/PlaceType";
 import { Link } from "react-router-dom";
+import { Footer } from "../components/Footer";
 
 
 const AustraliaPage= () => {

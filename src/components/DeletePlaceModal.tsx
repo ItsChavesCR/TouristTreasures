@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { deletePlace } from "../services/Places";
 
-export default function DeletePlaceModal({  countryId, placeId}: {
+export default function DeletePlaceModal({ countryId, placeId }: {
 
   countryId: string;
   placeId: string;
@@ -12,11 +12,11 @@ export default function DeletePlaceModal({  countryId, placeId}: {
 
   const [viewModal, setViewModal] = React.useState(false);
 
-  const ModalPresentTrue = () =>{
+  const ModalPresentTrue = () => {
     setViewModal(true)
   }
 
-  const ModalPresentFalse = () =>{
+  const ModalPresentFalse = () => {
     setViewModal(false)
   }
 
@@ -24,7 +24,7 @@ export default function DeletePlaceModal({  countryId, placeId}: {
     console.log("Submit delete place")
 
     try {
-      await deletePlace( countryId, placeId)
+      await deletePlace(countryId, placeId)
       setViewModal(true)
       navigate('/')
     } catch (error) {
@@ -33,7 +33,7 @@ export default function DeletePlaceModal({  countryId, placeId}: {
   }
   return (
     <>
-      <button onClick={ModalPresentTrue} className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900" type="button">
+      <button onClick={ModalPresentTrue} className="Button">
         Delete
       </button>
       {viewModal ? (

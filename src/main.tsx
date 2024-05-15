@@ -17,9 +17,6 @@ import UpdatePlaceForm from './components/UpdatePlaceForm.tsx';
 
 
 
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
