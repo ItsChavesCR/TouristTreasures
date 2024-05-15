@@ -34,7 +34,7 @@ const NewPlaceForm = () => {
             <label>PlaceId</label>
             <input
               type='text'
-              {...register('placeId')}
+              {...register('placeId',  {required: true}) }
             />
           </div>
           <br />
@@ -43,7 +43,7 @@ const NewPlaceForm = () => {
             <input
 
               type='text'
-              {...register('name')}
+              {...register('name', {required: true})}
             />
           </div>
           <br />
@@ -51,7 +51,7 @@ const NewPlaceForm = () => {
             <label>Descripción</label>
             <input
               type='text'
-              {...register('description')} />
+              {...register('description', {required: true})} />
           </div>
           <div>
             <label htmlFor='imagenInput'>Imagen</label>
@@ -65,7 +65,7 @@ const NewPlaceForm = () => {
             <label htmlFor='priceInput'>Precio</label>
             <input
               type='text'
-              {...register('price')}
+              {...register('price', {required: true})}
               id='priceInput'
             />
           </div>
@@ -90,7 +90,7 @@ const NewPlaceForm = () => {
             </label>
             <br />
             <select
-              {...register('countryId')}
+              {...register('countryId', {required: true})}
               id='countryId'
               required>
               <option >Select country</option>
