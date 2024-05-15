@@ -5,7 +5,7 @@ import '../styles/AddButton.css'
 const AddButton = () => {
   return (
     <div className='container-button'>
-      <Link className='add-button' to={'/addplace'}>New Place</Link>
+      <Link className='add-button' to={'/addplace'}>Add</Link>
     </div>
   )
 }

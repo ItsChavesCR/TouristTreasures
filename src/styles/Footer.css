@@ -16,6 +16,11 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    column-gap: 100px;
-    
+    column-gap: 300px;
+    padding: 40px;
+}
+
+.Title{
+    font-weight: bold;
+    font-size: 19px
 }

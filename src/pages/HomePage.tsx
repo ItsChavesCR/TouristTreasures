@@ -12,7 +12,7 @@ const HomePage = () => {
       <>
       <CountryProvider>
       <Header/>
-      <SearchPlaces/>
+     <SearchPlaces/>
       <AddButton/>
       <PlacesCard/>
       <Footer/>

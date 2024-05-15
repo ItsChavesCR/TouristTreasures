@@ -8,13 +8,13 @@ const Footer = () => {
         <div className='container'>
           <div className='row'>
             <div className="col-md-4">
-              <h3>Información de Contacto</h3>
+              <h3 className='Title'>Información de Contacto</h3>
               <p><i className="fas fa-map-marker-alt"></i> Nicoya, Nicoya, Costa Rica</p>
               <p><i className="fas fa-phone"></i> +506 83099833</p>
               <p><i className="fas fa-envelope"></i> info@touristTreasures.com</p>
             </div>
             <div className="col-md-4">
-              <h3>Enlaces Útiles</h3>
+              <h3 className='Title'>Enlaces Útiles</h3>
               <ul className="list-unstyled">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Idioma</a></li>
@@ -23,7 +23,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="col-md-4">
-              <h3>Síguenos</h3>
+              <h3 className='Title'>Síguenos</h3>
               <ul className="list-inline">
                 <li className="list-inline-item"><a href="#"><i className="fab fa-facebook-f"></i></a></li>
                 <li className="list-inline-item"><a href="#"><i className="fab fa-twitter"></i></a></li>
