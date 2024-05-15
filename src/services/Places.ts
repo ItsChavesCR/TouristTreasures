@@ -81,14 +81,14 @@ export async function deletePlace(countryId: string, placeId: string) {
 
 
 
- export async function updatePlace( countryId: string, placeId: string ) {
+ export async function updatePlace( countryId: number, placeId: number, updatePlace: PlaceType ) {
   let response;
   try {
-    response = await fetch(`https://.mockapi.io/countries/${countryId}/place/${placeId}`,
+    response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places/${placeId}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(countryId),
+        body: JSON.stringify(updatePlace),
       }
     );
     if (!response.ok) throw new Error("Error updating place");
@@ -100,7 +100,7 @@ export async function deletePlace(countryId: string, placeId: string) {
     const responseData: PlaceType = await response.json();
     return responseData;
   } catch (error) {
-    console.error("Error occurred while parsing response: ", error);
+    console.error("an error has occurred with the response: ", error);
     throw error;
   }
 }
