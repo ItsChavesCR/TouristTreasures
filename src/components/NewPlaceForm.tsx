@@ -5,7 +5,7 @@ import { createPlaces } from '../services/Places';
 
 const NewPlaceForm = () => {
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: {errors} } = useForm();
 
   const navigate = useNavigate();
 
@@ -79,6 +79,10 @@ const NewPlaceForm = () => {
               })}
               id='ratingInput'
             />
+       
+            {errors.rating && (
+            <span className='error-message'>{errors.rating.message}</span>)}
+           <br/>
             <label
               htmlFor='countryId'>
               <strong>Country</strong>
@@ -97,8 +101,8 @@ const NewPlaceForm = () => {
             </select>
           </div>
           <div className='confirm-input'>
-            <button type='submit' value='Aceptar' >Aceptar</button>
-            <button type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
+            <button className='Button' type='submit' value='Aceptar' >Aceptar</button>
+            <button className='Button' type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
           </div>
         </form>
       </div>
