@@ -1,5 +1,4 @@
 export type PlaceType = {
-
     placeId: number,
     countryId: number,
     name: string,

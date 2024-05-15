@@ -14,17 +14,17 @@ export const DetailPlacePage = () => {
         return <div></div>
     }
 
-    const { place } = useGetPlaceById(placeId, countryId); //cambiar ??
+    const { place } = useGetPlaceById(placeId, countryId); 
 
     return (
         <>
             <section>
                 <article>
                     <div className='image-container'>
-                        <img src={place?.image} ></img>
+                        <img className="" src={place?.image} ></img>
                     </div>
                     <div className='information-details'>
-                        <h1 className='detail-name'>{place?.name}</h1>
+                        <h1 className="text-xl"><strong>{place?.name}</strong></h1>
 
                         <div>
                             <p>Price: {place?.price}</p>
@@ -40,12 +40,12 @@ export const DetailPlacePage = () => {
                 </article>
                 <div className='buttons-udb'>
                     <Link to={'/'}>
-                    <button>
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
                         Back
                     </button>
                     </Link>
                     <Link to={`/updateplace/${place?.countryId}/${place?.placeId}`}>
-                    <button>
+                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
                         Update
                     </button>
                     </Link>
