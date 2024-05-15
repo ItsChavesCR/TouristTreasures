@@ -1,6 +1,6 @@
 import '../styles/Footer.css'
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <div>
       <footer className='footer'>
@@ -16,10 +16,10 @@ const Footer = () => {
             <div className="col-md-4">
               <h3 className='Title'>Enlaces Útiles</h3>
               <ul className="list-unstyled">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Idioma</a></li>
-                <li><a href="#">Ofertas</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a className='text-footer' href="#">Inicio</a></li>
+                <li><a className='text-footer' href="#">Idioma</a></li>
+                <li><a className='text-footer' href="#">Ofertas</a></li>
+                <li><a className='text-footer' href="#">Sobre Nosotros</a></li>
               </ul>
             </div>
             <div className="col-md-4">
@@ -38,4 +38,3 @@ const Footer = () => {
   )
 }
 
-export default Footer

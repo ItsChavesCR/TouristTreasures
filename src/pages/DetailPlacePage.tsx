@@ -14,17 +14,18 @@ export const DetailPlacePage = () => {
         return <div></div>
     }
 
-    const { place } = useGetPlaceById(placeId, countryId); 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { place } = useGetPlaceById(placeId, countryId);
 
     return (
         <>
             <section>
                 <article>
                     <div className='image-container'>
-                        <img className="" src={place?.image} ></img>
+                        <img className="detail-image" src={place?.image} ></img>
                     </div>
                     <div className='information-details'>
-                        <h1 className="text-xl"><strong>{place?.name}</strong></h1>
+                        <h1 className="detail-name"><strong>{place?.name}</strong></h1>
 
                         <div>
                             <p>Price: {place?.price}</p>
@@ -40,19 +41,18 @@ export const DetailPlacePage = () => {
                 </article>
                 <div className='buttons-udb'>
                     <Link to={'/'}>
-                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
-                        Back
-                    </button>
+                        <button className="Button">
+                            Back
+                        </button>
                     </Link>
                     <Link to={`/updateplace/${place?.countryId}/${place?.placeId}`}>
-                    <button className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900">
-                        Update
-                    </button>
+                        <button className="Button">
+                            Update
+                        </button>
                     </Link>
-                    <DeletePlaceModal placeId = {place?.placeId} countryId = {place?.countryId} />
+                    <DeletePlaceModal placeId={place?.placeId} countryId={place?.countryId} />
                 </div>
             </section>
         </>
     )
 }
-
