@@ -1,4 +1,4 @@
-type PlaceType = {
+export type PlaceType = {
 
     placeId: number,
     countryId: number,

@@ -1,3 +1,5 @@
+import { PlaceType } from "../types/PlaceType";
+
 export async function createPlaces(
   PostPlace: PlaceType,
 ) {
@@ -52,6 +54,13 @@ export async function getPlaceById(countryId: string, placeId: string) {
     console.error("Error occurred while fetching product: ", error);
     throw error;
   } 
+  try{
+    const responseData: PlaceType = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error("Error occurred while parsing response", error);
+    throw error;
+  }
 }
 
 
@@ -92,7 +101,7 @@ export async function getProductByCountry(
   } 
 }
 
-export async function deletePlace(placeId: number, countryId: number) {
+export async function deletePlace(countryId: string, placeId: string) {
   let response;
   try {
     response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/countries/${countryId}/places/${placeId}`,
@@ -109,9 +118,10 @@ export async function deletePlace(placeId: number, countryId: number) {
 }
 
 
+
  export async function updatePlace(
-  countryId: string,
-  placeId: string,
+  countryId: number,
+  placeId: number,
   updatedPlace: PlaceType
 ) {
   let response;

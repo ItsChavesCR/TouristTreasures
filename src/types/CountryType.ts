@@ -1,4 +1,4 @@
-type CountryType = {
+export type CountryType = {
 
     name: string,
     countryId: number

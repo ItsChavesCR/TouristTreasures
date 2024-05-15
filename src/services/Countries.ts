@@ -1,6 +1,6 @@
+import { CountryType } from "../types/CountryType"
 
-
-export async function createCountry(NewPlace: PlaceType) {
+export async function createCountry(NewPlace: CountryType) {
   let response 
   try {
    response = await fetch(

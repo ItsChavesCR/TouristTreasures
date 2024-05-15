@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { getPlaceById } from "../../services/Places";
-import PlaceType  from "../../types/PlaceType";
+import { PlaceType } from "../../types/PlaceType";
 
 
-export function useGetPlaceById(countryId: string, placeId: string) {
+export function useGetPlaceById( placeId: string, countryId: string ) {
   const [place, setPlace] = useState<PlaceType>();
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     async function getPlace() {
       try {
-        const place = await getPlaceById(countryId, placeId);
+        const place = await getPlaceById(countryId, placeId); //Se podria cambiar
         setPlace(place);
         setLoading(true);
       } catch (error) {
