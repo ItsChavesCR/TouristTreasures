@@ -30,7 +30,7 @@ const PortugalPage = () => {
                             <br />
                             <p id='place-description'> {place.description}</p>
                             <p id='place-price'>{place.price}</p>
-                            <p id='place-rating' >{place.rating}</p>
+                           
                             <div className='container-details'>
                                 <Link to={`/places/${place.countryId}/${place.placeId}`}>
                                     <button className='button-details'>

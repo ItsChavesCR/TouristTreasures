@@ -105,24 +105,6 @@ export async function deletePlace(countryId: string, placeId: string) {
   }
 }
 
-// export async function searchPlaces() {
-//   try {
-//       const response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/places`, {
-//           method: "GET",
-//           headers: { "Content-Type": "application/json" },
-//       });
-
-//       if (!response.ok) {
-//           throw new Error("Network response was not ok");
-//       }
-//       const data = await response.json();
-//       return data;
-//   } catch (error) {
-//       console.error("Error fetching data:", error);
-//       throw error;
-//   } 
-// }
-
 
 
 
