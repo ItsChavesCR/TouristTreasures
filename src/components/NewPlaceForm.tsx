@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import '../styles/NewPlaceForm.css'
 import { useNavigate } from 'react-router-dom';
 import { createPlaces } from '../services/Places';
+import { PlaceType } from '../types/PlaceType';
 
 const NewPlaceForm = () => {
 
