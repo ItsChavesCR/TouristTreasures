@@ -13,7 +13,7 @@ export async function createPlaces(
         body: JSON.stringify(PostPlace),
       }
     );
-    if (!response.ok) throw new Error("Error al crear producto");
+    if (!response.ok) throw new Error("Error al crear place");
   } catch (error) {
     console.error("Error: ", error);
     throw error;
@@ -49,9 +49,9 @@ export async function getPlaceById(countryId: string, placeId: string) {
         headers: { "Content-Type": "application/json" },
       }
     );
-    if (!response.ok) throw new Error("Error to get product");
+    if (!response.ok) throw new Error("Error to get place");
   } catch (error) {
-    console.error("Error occurred while fetching product: ", error);
+    console.error("Error occurred while fetching place: ", error);
     throw error;
   } 
   try{
@@ -91,9 +91,9 @@ export async function deletePlace(countryId: string, placeId: string) {
         body: JSON.stringify(countryId),
       }
     );
-    if (!response.ok) throw new Error("Error updating product");
+    if (!response.ok) throw new Error("Error updating place");
   } catch (error) {
-    console.error("Error occurred while updating product: ", error);
+    console.error("Error occurred while updating place: ", error);
     throw error;
   } 
   try {
@@ -105,23 +105,23 @@ export async function deletePlace(countryId: string, placeId: string) {
   }
 }
 
-export async function searchPlaces() {
-  try {
-      const response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/places`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-      });
+// export async function searchPlaces() {
+//   try {
+//       const response = await fetch(`https://6632f68bf7d50bbd9b47beee.mockapi.io/places`, {
+//           method: "GET",
+//           headers: { "Content-Type": "application/json" },
+//       });
 
-      if (!response.ok) {
-          throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      return data;
-  } catch (error) {
-      console.error("Error fetching data:", error);
-      throw error;
-  } 
-}
+//       if (!response.ok) {
+//           throw new Error("Network response was not ok");
+//       }
+//       const data = await response.json();
+//       return data;
+//   } catch (error) {
+//       console.error("Error fetching data:", error);
+//       throw error;
+//   } 
+// }
 
 
 

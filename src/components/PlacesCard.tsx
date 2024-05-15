@@ -7,7 +7,7 @@ import { PlaceType } from '../types/PlaceType';
 
 
 
-const PlacesCard = ({ place }: { place: PlaceType }) => {
+const PlacesCard = ({ }: { place: PlaceType }) => { //place ..
    
     const { placesResults, setPlacesResults } = useGetAllPlaces();
     useEffect(() => {

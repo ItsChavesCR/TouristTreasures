@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import DeletePlaceModal from "../components/DeletePlaceModal";
+import { PlaceType } from "../types/PlaceType";
+import { Link } from "react-router-dom";
 
 
 const AustraliaPage= () => {
@@ -31,7 +33,14 @@ useEffect(() => {
                           <p id='place-description'> {place.description}</p>
                           <p id='place-price'>{place.price}</p>
                           <p id='place-rating' >{place.rating}</p>
-                          <DeletePlaceModal/>
+
+                      <div className='container-details'>
+                            <Link to={`/places/${place.countryId}/${place.placeId}`}>
+                                <button className='button-details'>
+                                    More Details
+                                </button>
+                            </Link>
+                        </div>
                       </div>
                   ))
               }

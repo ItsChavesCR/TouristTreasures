@@ -10,7 +10,7 @@ export function useGetPlaceById( countryId: string, placeId: string ) {
   useEffect(() => {
     async function getPlace() {
       try {
-        const place = await getPlaceById(countryId, placeId); //Se podria cambiar
+        const place = await getPlaceById( placeId, countryId); //Se podria cambiar
         setPlace(place);
         setLoading(true);
       } catch (error) {
