@@ -1,188 +1,113 @@
-
+import { useForm } from 'react-hook-form';
 import '../styles/NewPlaceForm.css'
-import usePutPlace from '../hooks/Places/usePutPlace';
-import { Link, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { updatePlace } from '../services/Places';
 
-export const UpdatePlaceForm = () => {
-    const { countryId, placeId } = useParams<{
-        countryId: string;
-        placeId: string;
-      }>();
-    
-      if (!countryId || !placeId) {
-        return ;
-      }
-    
-      // eslint-disable-next-line react-hooks/rules-of-hooks
-      const { register, OnSubmit } = usePutPlace (countryId, placeId);
+const UpdatePlaceForm = () => {
+
+  const { register, handleSubmit, formState: {errors} } = useForm();
+
+  const navigate = useNavigate();
+
+  const onSubmit = handleSubmit(async (data) => {
+    const placeData: PlaceType = JSON.parse(JSON.stringify(data))
+
+    try {
+      await updatePlace(placeData)
+      navigate('/')
+    } catch (error) {
+      console.error('Error creating place:', error)
+    }
+  })
+
+  const handleCancel = () => {
+    navigate('/')
+  }
 
   return (
     <>
-    <div className="bg-gray-600 max-h-fit p-10">
-      <form className="max-w-sm mx-auto" onSubmit={OnSubmit}>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="id"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Id
-          </label>
-          <input
-            type="text"
-            {...register("placeid")}
-            id="id"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            disabled
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="title"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Title
-          </label>
-          <input
-            type="text"
-            {...register("name")}
-            id="title"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="price"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Price
-          </label>
-          <input
-            type="number"
-            {...register("price")}
-            name="price"
-            id="price"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            placeholder="$100"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="description"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Description
-          </label>
-          <textarea
-            {...register("description")}
-            id="description"
-            {...register("description")}
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          ></textarea>
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="color"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Color
-          </label>
-          <input
-            type="text"
-            {...register("color")}
-            id="color"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="rating"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Rating
-          </label>
-          <input
-            type="text"
-            {...register("rating")}
-            id="rating"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="inStock"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            In Stock
-          </label>
-          <input
-            type="number"
-            {...register("inStock")}
-            id="inStock"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="brand"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Brand
-          </label>
-          <input
-            type="text"
-            {...register("brand")}
-            id="brand"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-            required
-          />
-        </div>
-        <div className="col-span-2 sm:col-span-1 max-h-fit">
-        </div>
-        <div className="col-span-2 sm:col-span-1">
-          <label
-            htmlFor="category"
-            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >
-            Category
-          </label>
-          <select
-            {...register("categoryId")}
-            id="category"
-            required
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-          >
-            <option>Select category</option>
-            <option value="1">Clothes</option>
-            <option value="2">Electronics</option>
-            <option value="3">Furniture</option>
-            <option value="4">Shoes</option>
-            <option value="5">Sports & Outdoor</option>
-          </select>
-        </div>
-        <section className=" gap-2 mt-2">
-          <button
-            type="submit"
-            className="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            Save
-          </button>
-          <Link to={`/places/${countryId}/${placeId}`}>
-            <button
-              type="button"
-              className="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-            >
-              Cancel
-            </button>
-          </Link>
-        </section>
-      </form>
-    </div>
-  </>
-);
+      <h1>Formulario</h1>
+      <div className='container_form'>
+        <form onSubmit={onSubmit}>
+          <div>
+            <label>PlaceId</label>
+            <input
+              type='text'
+              {...register('placeId')}
+            />
+          </div>
+          <br />
+          <div>
+            <label>Nombre</label>
+            <input
+
+              type='text'
+              {...register('name')}
+            />
+          </div>
+          <br />
+          <div>
+            <label>Descripción</label>
+            <input
+              type='text'
+              {...register('description')} />
+          </div>
+          <div>
+            <label htmlFor='imagenInput'>Imagen</label>
+            <input
+              type='text'
+              {...register('image')}
+              id='imagenInput' />
+          </div>
+          <br />
+          <div>
+            <label htmlFor='priceInput'>Precio</label>
+            <input
+              type='text'
+              {...register('price')}
+              id='priceInput'
+            />
+          </div>
+          <br />
+          <div>
+            <label htmlFor='ratingInput'>Rating</label>
+            <input
+              type="number"
+              {...register('rating', {
+                max: { value: 5, message: 'El rating no puede ser mayor a 5' },
+                min: { value: 0, message: 'El rating no puede ser menor a 0' },
+              })}
+              id='ratingInput'
+            />
+       
+            {errors.rating && (
+            <span className='error-message'>{errors.rating.message}</span>)}
+           <br/>
+            <label
+              htmlFor='countryId'>
+              <strong>Country</strong>
+            </label>
+            <br />
+            <select
+              {...register('countryId')}
+              id='countryId'
+              required>
+              <option >Select country</option>
+              <option value='1'> Costa Rica </option>
+              <option value='2'> Portugal </option>
+              <option value='3'> India </option>
+              <option value='4'> Japon </option>
+              <option value='5'> Australia </option>
+            </select>
+          </div>
+          <div className='confirm-input'>
+            <button className='Button' type='submit' value='Aceptar' >Aceptar</button>
+            <button className='Button' type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </>
+  )
 }
+
+export default UpdatePlaceForm
