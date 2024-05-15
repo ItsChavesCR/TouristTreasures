@@ -3,7 +3,7 @@ import { getPlaceById } from "../../services/Places";
 import { PlaceType } from "../../types/PlaceType";
 
 
-export function useGetPlaceById( countryId: string, placeId: string ) {
+export function useGetPlaceById( countryId: number, placeId: number ) {
   const [place, setPlace] = useState<PlaceType>();
   const [loading, setLoading] = useState<boolean>(false);
 

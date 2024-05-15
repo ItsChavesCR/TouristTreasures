@@ -1,40 +1,32 @@
-import { useForm } from 'react-hook-form';
 import '../styles/NewPlaceForm.css'
-import { useNavigate } from 'react-router-dom';
-import { updatePlace } from '../services/Places';
-import { PlaceType } from '../types/PlaceType';
+import usePutPlace from '../hooks/Places/usePutPlace';
+import { Link, useParams } from 'react-router-dom';
 
 const UpdatePlaceForm = () => {
 
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const { countryId, placeId } = useParams<{
+    countryId: string;
+    placeId: string;
+  }>();
 
-  const navigate = useNavigate();
-
-  const onSubmit = handleSubmit(async (data) => {
-    const placeData: PlaceType = JSON.parse(JSON.stringify(data))
-
-    try {
-      await updatePlace(placeData)
-      navigate('/')
-    } catch (error) {
-      console.error('Error creating place:', error)
-    }
-  })
-
-  const handleCancel = () => {
-    navigate('/')
+  if (!countryId || !placeId) {
+    return null;
   }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { register, OnSubmit } = usePutPlace(countryId, placeId);
 
   return (
     <>
-      <h1>Formulario</h1>
+      <h1>Update Form</h1>
       <div className='container_form'>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={OnSubmit}>
           <div>
-            <label>PlaceId</label>
+            <label htmlFor='placeidInput'>PlaceId</label>
             <input
               type='text'
               {...register('placeId')}
+              id='placeIdInput'
             />
           </div>
           <br />
@@ -80,9 +72,6 @@ const UpdatePlaceForm = () => {
               })}
               id='ratingInput'
             />
-       
-            {errors.rating && (
-            <span className='error-message'>{errors.rating.message}</span>)}
            <br/>
             <label
               htmlFor='countryId'>
@@ -103,7 +92,9 @@ const UpdatePlaceForm = () => {
           </div>
           <div className='confirm-input'>
             <button className='Button' type='submit' value='Aceptar' >Aceptar</button>
-            <button className='Button' type='submit' value='Cancelar' onClick={handleCancel} >Cancelar</button>
+            <Link to={`/places/${countryId}/${placeId}`}>
+            <button className='Button' type='submit' value='Cancelar'>Cancelar</button>
+            </Link>
           </div>
         </form>
       </div>
