@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import React, { useContext } from "react";
+import React from "react";
 import { deletePlace } from "../services/Places";
-import CountryContext from "../context/CountryContext";
 
-export default function DeletePlaceModal({ name }: {
+export default function DeletePlaceModal({ name, countryId, placeId}: {
   name: string;
-  
+  countryId: string;
+  placeId: string;
 }) {
-
- const { placeId, countryId } = useContext(CountryContext);
 
   const navigate = useNavigate()
 
@@ -26,7 +24,7 @@ export default function DeletePlaceModal({ name }: {
     console.log("Submit delete place")
 
     try {
-      await deletePlace(placeId, countryId)
+      await deletePlace( countryId, placeId)
       setViewModal(true)
       navigate('/')
     } catch (error) {
