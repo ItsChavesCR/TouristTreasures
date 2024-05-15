@@ -13,7 +13,7 @@ import AustraliaPage from './pages/AustraliaPage.tsx';
 import NewPlaceForm from './components/NewPlaceForm.tsx';
 import '../src/index.css';
 import { DetailPlacePage } from './pages/DetailPlacePage.tsx';
-import { UpdatePlaceForm } from './components/UpdatePlaceForm.tsx';
+import UpdatePlaceForm from './components/UpdatePlaceForm.tsx';
 
 
 
